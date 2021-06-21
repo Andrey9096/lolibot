@@ -1,11 +1,13 @@
 import logging
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher.filters import BoundFilter
+from db import DB_CONNECT
 API_TOKEN = '1819449909:AAGXFeRV4KulEdSO4fEMZQxq2M6EoAta-qg'
 logging.basicConfig(level=logging.INFO)
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher(bot)
+dbc = DB_CONNECT()
 
 @dp.message_handler(commands=['start'])
 async def send_msg(message: types.Message):
@@ -20,20 +22,6 @@ async def new_member(message):
 @dp.message_handler(commands=['rights'])
 async def myrights(message: types.Message):
     member = await bot.get_chat_member(message.chat.id, API_TOKEN.split(":")[0])
-
-
-
-
-#async def my_filter(message: types.Message):
-#    return {'растер' : 'пидар'}
-#
-#
-#
-#@dp.message_handler(my_filter)
-#async def my_message_handler(message: types.Message):
-#    await message.reply()
-#
-
 
 
 
