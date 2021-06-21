@@ -13,8 +13,8 @@ async def send_msg(message: types.Message):
 
 @dp.message_handler(content_types=["new_chat_members"])
 async def new_member(message):
-    user_name = message.new_chat_member.first_name
-    bot.send_message(message.chat.id, "Добро пожаловать, {0}! Правило одно - не мамкоебить!".format(user_name))
+    user_name = message.new_chat_members[0].first_name
+    await  bot.send_message(message.chat.id, "Добро пожаловать, {0}! Правило одно - не мамкоебить!".format(user_name))
 
 
 if __name__ == '__main__':
